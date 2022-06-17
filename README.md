@@ -25,8 +25,7 @@ In each dataset, `graph.yml` or `graphs/*.yml` are FDGs, `metrics.csv` is metric
 
 
 ## Deployment and Failure Injection Scripts of Train-Ticket
-The official repo is at https://github.com/fudanselab/train-ticket.
-Our scripts will be public after publication.
+https://github.com/lizeyan/train-ticket
 
 ## Supplementary details
 ### Local interpretation
