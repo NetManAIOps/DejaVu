@@ -1,4 +1,51 @@
 # DejaVu
+## Table of Contents
+=================
+
+  * [Code](#code)
+    * [Install Requirements](#install-requirements)
+    * [Usage](#usage)
+    * [Example](#example)
+  * [Datasets](#datasets)
+  * [Deployment and Failure Injection Scripts of Train-Ticket](#deployment-and-failure-injection-scripts-of-train-ticket)
+  * [Citation](#citation)
+  * [Supplementary details](#supplementary-details)
+## Code
+### Install Requirements
+See `requirements.txt` and `requirements-dev.txt`. Note that `DGL 0.8` is not released yet, so you need to install `DGL 0.8` manually from the source code. PyTorch version should be equal to or greater than 1.11.0.
+
+I also publish a docker image on DockerHub: https://hub.docker.com/repository/docker/lizytalk/dejavu, which is based on [NGC PyTorch Image](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel_21-11.html) and supports GPU acceleration.
+
+### Usage
+|Algorithm|Usage|
+|---|---|
+|DejaVu|`python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1`|
+|JSS'20|`python exp/DejaVu/run_JSS20.py --data_dir=data/A1`|
+|iSQUAD|`python exp/DejaVu/run_iSQ.py --data_dir=data/A1`|
+|Decision Tree|`python exp/run_DT_node_classification.py --data_dir=data/A1`|
+|RandomWalk@Metric|`python exp/DejaVu/run_random_walk_single_metric.py --data_dir=/SSF/data/A1 --window_size 60 10 --score_aggregation_method=min`|
+|RandomWalk@FI|`python exp/DejaVu/run_random_walk_failure_instance.py --data_dir=/SSF/data/A1 --window_size 60 10 --anomaly_score_aggregation_method=min --corr_aggregation_method=max`|
+|`notebooks/explain.py`|Global interpretation. Run it as a jupyter notebook with `jupytext`|
+|`DejaVu/explanability/similar_faults.py`|Local interpretation|
+
+The commands would print a `one-line summary`, including the following fields: `A@1`, `A@2`, `A@3`, `A@5`, `MAR`, `Time`, `Epoch`, `Valid Epoch`, `output_dir`, `val_loss`, `val_MAR`, `val_A@1`, `command`, `git_commit_url`
+### Example
+```
+$ docker run -it --rm -v $(realpath .):/workspace lizytalk/dejavu bash -c 'source .envrc && python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1'
+...
+2022-06-20 03:49:26.204 | INFO     | DejaVu.workflow:<lambda>:124 - command output one-line summary: 75.00,93.75,100.00,100.00,1.31,335.0238134629999,,,/SSF/output/run_GAT_node_classification.py.2022-06-20T03:43:49.950103,,,,python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1 --max_epoch=100,https://anonymous-submission-22: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@github.com/anonymous-submission-22/DejaVu/tree/240d7d2514c31ca699b2b818ba7d888e0eb71c4d
+train finished. saved to /SSF/output/run_GAT_node_classification.py.2022-06-20T03:43:49.950103
+```
+
+## Datasets
+
+The datasets A, B, C, D are public at https://www.dropbox.com/sh/ist4ojr03e2oeuw/AAD5NkpAFg1nOI2Ttug3h2qja?dl=0.
+In each dataset, `graph.yml` or `graphs/*.yml` are FDGs, `metrics.csv` is metrics, and `faults.csv` is failures (including ground truths).
+`FDG.pkl` is a pickle of the FDG object, which contains all the above data.
+
+
+## Deployment and Failure Injection Scripts of Train-Ticket
+https://github.com/lizeyan/train-ticket
 
 ## Citation
 ``` bibtex
@@ -11,21 +58,6 @@
   series = {{{ESEC}}/{{FSE}} 2022}
 }
 ```
-
-
-
-## Code
-The implemetation of DejaVu and baselines will be public after publication.
-
-## Datasets
-
-The datasets A, B, C, D are public at https://www.dropbox.com/sh/ist4ojr03e2oeuw/AAD5NkpAFg1nOI2Ttug3h2qja?dl=0.
-In each dataset, `graph.yml` or `graphs/*.yml` are FDGs, `metrics.csv` is metrics, and `faults.csv` is failures (including ground truths).
-`FDG.pkl` is a pickle of the FDG object, which contains all the above data.
-
-
-## Deployment and Failure Injection Scripts of Train-Ticket
-https://github.com/lizeyan/train-ticket
 
 ## Supplementary details
 ### Local interpretation

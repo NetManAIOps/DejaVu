@@ -1,0 +1,1 @@
+from failure_instance_feature_extractor.feature_projector import FIFeatureExtractor
