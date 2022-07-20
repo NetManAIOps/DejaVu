@@ -10,6 +10,9 @@
   * [Deployment and Failure Injection Scripts of Train-Ticket](#deployment-and-failure-injection-scripts-of-train-ticket)
   * [Citation](#citation)
   * [Supplementary details](#supplementary-details)
+  
+## Paper
+A preprint version: https://arxiv.org/abs/2207.09021
 ## Code
 ### Install Requirements
 See `requirements.txt` and `requirements-dev.txt`. Note that `DGL 0.8` is not released yet, so you need to install `DGL 0.8` manually from the source code. PyTorch version should be equal to or greater than 1.11.0.
