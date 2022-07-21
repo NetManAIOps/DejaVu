@@ -22,14 +22,14 @@ I also publish a docker image on DockerHub: https://hub.docker.com/repository/do
 ### Usage
 |Algorithm|Usage|
 |---|---|
-|DejaVu|`python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1`|
-|JSS'20|`python exp/DejaVu/run_JSS20.py --data_dir=data/A1`|
-|iSQUAD|`python exp/DejaVu/run_iSQ.py --data_dir=data/A1`|
-|Decision Tree|`python exp/run_DT_node_classification.py --data_dir=data/A1`|
-|RandomWalk@Metric|`python exp/DejaVu/run_random_walk_single_metric.py --data_dir=/SSF/data/A1 --window_size 60 10 --score_aggregation_method=min`|
-|RandomWalk@FI|`python exp/DejaVu/run_random_walk_failure_instance.py --data_dir=/SSF/data/A1 --window_size 60 10 --anomaly_score_aggregation_method=min --corr_aggregation_method=max`|
-|`notebooks/explain.py`|Global interpretation. Run it as a jupyter notebook with `jupytext`|
-|`DejaVu/explanability/similar_faults.py`|Local interpretation|
+|DejaVu|Run for dataset A1: `python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1`|
+|JSS'20|Run for dataset A1: `python exp/DejaVu/run_JSS20.py --data_dir=data/A1`|
+|iSQUAD|Run for dataset A1: `python exp/DejaVu/run_iSQ.py --data_dir=data/A1`|
+|Decision Tree|Run for dataset A1: `python exp/run_DT_node_classification.py --data_dir=data/A1`|
+|RandomWalk@Metric|Run for dataset A1: `python exp/DejaVu/run_random_walk_single_metric.py --data_dir=/SSF/data/A1 --window_size 60 10 --score_aggregation_method=min`|
+|RandomWalk@FI|Run for dataset A1: `python exp/DejaVu/run_random_walk_failure_instance.py --data_dir=/SSF/data/A1 --window_size 60 10 --anomaly_score_aggregation_method=min --corr_aggregation_method=max`|
+|Global interpretation|Run `notebooks/explain.py` as a jupyter notebook with `jupytext`|
+|Local interpretation|`DejaVu/explanability/similar_faults.py`|
 
 The commands would print a `one-line summary`, including the following fields: `A@1`, `A@2`, `A@3`, `A@5`, `MAR`, `Time`, `Epoch`, `Valid Epoch`, `output_dir`, `val_loss`, `val_MAR`, `val_A@1`, `command`, `git_commit_url`
 ### Example
