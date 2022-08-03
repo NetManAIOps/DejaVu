@@ -42,7 +42,9 @@ train finished. saved to /SSF/output/run_GAT_node_classification.py.2022-06-20T0
 
 ## Datasets
 
-The datasets A, B, C, D are public at https://www.dropbox.com/sh/ist4ojr03e2oeuw/AAD5NkpAFg1nOI2Ttug3h2qja?dl=0.
+The datasets A, B, C, D are public at :
+- https://www.dropbox.com/sh/ist4ojr03e2oeuw/AAD5NkpAFg1nOI2Ttug3h2qja?dl=0
+- https://doi.org/10.5281/zenodo.6955909 (including the raw data of the Train-Ticket dataset)
 In each dataset, `graph.yml` or `graphs/*.yml` are FDGs, `metrics.csv` is metrics, and `faults.csv` is failures (including ground truths).
 `FDG.pkl` is a pickle of the FDG object, which contains all the above data.
 Note that the pickle files are not compatible in different Python and Pandas versions. So if you cannot load the pickles, just ignore and delete them. They are only used to speed up data load.
