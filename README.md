@@ -19,19 +19,30 @@ See `requirements.txt` and `requirements-dev.txt`. Note that `DGL 0.8` is not re
 
 I also publish a docker image on DockerHub: https://hub.docker.com/repository/docker/lizytalk/dejavu, which is based on [NGC PyTorch Image](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel_21-11.html) and supports GPU acceleration.
 
+I use the command `realpath` in the example commands below, which is not bundled in macOS and Windows. On macOS, you can install it by `brew install coreutils`.
+
 ### Usage
 |Algorithm|Usage|
 |---|---|
-|DejaVu|Run for dataset A1: `python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1`|
+|DejaVu|Run for dataset A1: `python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=data/A1`|
 |JSS'20|Run for dataset A1: `python exp/DejaVu/run_JSS20.py --data_dir=data/A1`|
 |iSQUAD|Run for dataset A1: `python exp/DejaVu/run_iSQ.py --data_dir=data/A1`|
 |Decision Tree|Run for dataset A1: `python exp/run_DT_node_classification.py --data_dir=data/A1`|
-|RandomWalk@Metric|Run for dataset A1: `python exp/DejaVu/run_random_walk_single_metric.py --data_dir=/SSF/data/A1 --window_size 60 10 --score_aggregation_method=min`|
-|RandomWalk@FI|Run for dataset A1: `python exp/DejaVu/run_random_walk_failure_instance.py --data_dir=/SSF/data/A1 --window_size 60 10 --anomaly_score_aggregation_method=min --corr_aggregation_method=max`|
+|RandomWalk@Metric|Run for dataset A1: `python exp/DejaVu/run_random_walk_single_metric.py --data_dir=data/A1 --window_size 60 10 --score_aggregation_method=min`|
+|RandomWalk@FI|Run for dataset A1: `python exp/DejaVu/run_random_walk_failure_instance.py --data_dir=data/A1 --window_size 60 10 --anomaly_score_aggregation_method=min --corr_aggregation_method=max`|
 |Global interpretation|Run `notebooks/explain.py` as a jupyter notebook with `jupytext`|
 |Local interpretation|`DejaVu/explanability/similar_faults.py`|
 
-The commands would print a `one-line summary`, including the following fields: `A@1`, `A@2`, `A@3`, `A@5`, `MAR`, `Time`, `Epoch`, `Valid Epoch`, `output_dir`, `val_loss`, `val_MAR`, `val_A@1`, `command`, `git_commit_url`
+The commands would print a `one-line summary` in the end, including the following fields: `A@1`, `A@2`, `A@3`, `A@5`, `MAR`, `Time`, `Epoch`, `Valid Epoch`, `output_dir`, `val_loss`, `val_MAR`, `val_A@1`, `command`, `git_commit_url`, which are the desrired results.
+
+Totally, the main experiment commands of DejaVu should output as follows:
+- FDG message, including the data paths, edge types, the number of nodes (failure units), the number of metrics, the metrics of each failure class.
+- Traning setup message: the faults used for training, validation and testing.
+- Model architecture: model parameters in each part, total params
+- Training process: the training/validation/testing loss and accuracy
+- Time Report.
+- command output one-line summary.
+
 ### Example
 ```
 $ docker run -it --rm -v $(realpath .):/workspace lizytalk/dejavu bash -c 'source .envrc && python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1'
