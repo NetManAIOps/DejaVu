@@ -45,7 +45,7 @@ Totally, the main experiment commands of DejaVu should output as follows:
 
 ### Example
 ```
-$ docker run -it --rm -v $(realpath .):/workspace lizytalk/dejavu bash -c 'source .envrc && python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1'
+$ docker run -it --rm -v $(realpath .):/workspace lizytalk/dejavu bash -c 'source .envrc && python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -bal=True --data_dir=./data/A1'
 ...
 2022-06-20 03:49:26.204 | INFO     | DejaVu.workflow:<lambda>:124 - command output one-line summary: 75.00,93.75,100.00,100.00,1.31,335.0238134629999,,,/SSF/output/run_GAT_node_classification.py.2022-06-20T03:43:49.950103,,,,python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1 --max_epoch=100,https://anonymous-submission-22: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@github.com/anonymous-submission-22/DejaVu/tree/240d7d2514c31ca699b2b818ba7d888e0eb71c4d
 train finished. saved to /SSF/output/run_GAT_node_classification.py.2022-06-20T03:43:49.950103
