@@ -24,7 +24,7 @@ I use the command `realpath` in the example commands below, which is not bundled
 ### Usage
 |Algorithm|Usage|
 |---|---|
-|DejaVu|Run for dataset A1: `python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=data/A1`|
+|DejaVu|Run for dataset A1: `python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -bal=True --data_dir=data/A1`|
 |JSS'20|Run for dataset A1: `python exp/DejaVu/run_JSS20.py --data_dir=data/A1`|
 |iSQUAD|Run for dataset A1: `python exp/DejaVu/run_iSQ.py --data_dir=data/A1`|
 |Decision Tree|Run for dataset A1: `python exp/run_DT_node_classification.py --data_dir=data/A1`|
