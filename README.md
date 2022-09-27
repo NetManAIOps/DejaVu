@@ -60,6 +60,9 @@ In each dataset, `graph.yml` or `graphs/*.yml` are FDGs, `metrics.csv` is metric
 `FDG.pkl` is a pickle of the FDG object, which contains all the above data.
 Note that the pickle files are not compatible in different Python and Pandas versions. So if you cannot load the pickles, just ignore and delete them. They are only used to speed up data load.
 
+### Issues
+The trace data in dataset D is incorrect. We missed the Istio Gateway and thus, the trace ID were not properly assigned to the spans (upto commit b653e4a1ddc65e5cf1d51d239a427e2775216069). We have now fixed the issues (https://github.com/lizeyan/train-ticket/commit/898637e770317901a43552adba373703113e7735).
+
 
 ## Deployment and Failure Injection Scripts of Train-Ticket
 https://github.com/lizeyan/train-ticket
