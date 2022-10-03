@@ -62,7 +62,7 @@ Note that the pickle files are not compatible in different Python and Pandas ver
 
 ### Issues
 The trace data in dataset D is incorrect. We missed the Istio Gateway and thus, the trace ID were not properly assigned to the spans (upto commit b653e4a1ddc65e5cf1d51d239a427e2775216069). We have now fixed the issues (https://github.com/lizeyan/train-ticket/commit/898637e770317901a43552adba373703113e7735).
-
+Since DejaVu does not directly use traces, so this issue does not affect the validity of our paper.
 
 ## Deployment and Failure Injection Scripts of Train-Ticket
 https://github.com/lizeyan/train-ticket
