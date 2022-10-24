@@ -14,12 +14,24 @@
 ## Paper
 A preprint version: https://arxiv.org/abs/2207.09021
 ## Code
-### Install Requirements
-See `requirements.txt` and `requirements-dev.txt`. Note that `DGL 0.8` is not released yet, so you need to install `DGL 0.8` manually from the source code. PyTorch version should be equal to or greater than 1.11.0.
+### Install
+1. All the software requirements are already pre-installed in the Docker image below. The requirements are also listed in `requirements.txt` and `requirements-dev.txt`. Note that `DGL 0.8` is not released yet when I did this work, so I installed `DGL 0.8` manually from the source code. PyTorch version should be equal to or greater than 1.11.0.
+   ```bash
+   docker pull lizytalk/dejavu
+   ```
+2. Pull the code from GitHub
+   ```bash
+   git pull https://github.com/NetManAIOps/DejaVu.git DejaVu
+   ```
+3. Download the datasets following the link in the GitHub repo and extract the datasets into `./DejaVu/data`
+4. I use the command `realpath` in the example commands below, which is not bundled in macOS and Windows. On macOS, you can install it by `brew install coreutils`.
+5. Start a Docker container with our image and enter its shell
+   ```bash
+   docker run -it --rm -v $(realpath DejaVu):/workspace lizytalk/dejavu bash
+   ```
+6. Run `direnv allow` in the shell of the Docker container to set the environment variables.
+7. Run experiments in the shell of the Docker container following the usage table as follows.
 
-I also publish a docker image on DockerHub: https://hub.docker.com/repository/docker/lizytalk/dejavu, which is based on [NGC PyTorch Image](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel_21-11.html) and supports GPU acceleration.
-
-I use the command `realpath` in the example commands below, which is not bundled in macOS and Windows. On macOS, you can install it by `brew install coreutils`.
 
 ### Usage
 |Algorithm|Usage|
@@ -44,12 +56,7 @@ Totally, the main experiment commands of DejaVu should output as follows:
 - command output one-line summary.
 
 ### Example
-```
-$ docker run -it --rm -v $(realpath .):/workspace lizytalk/dejavu bash -c 'source .envrc && python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -bal=True --data_dir=./data/A1'
-...
-2022-06-20 03:49:26.204 | INFO     | DejaVu.workflow:<lambda>:124 - command output one-line summary: 75.00,93.75,100.00,100.00,1.31,335.0238134629999,,,/SSF/output/run_GAT_node_classification.py.2022-06-20T03:43:49.950103,,,,python exp/run_GAT_node_classification.py -H=4 -L=8 -fe=GRU -aug=True -bal=True --data_dir=./data/A1 --max_epoch=100,https://anonymous-submission-22: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@github.com/anonymous-submission-22/DejaVu/tree/240d7d2514c31ca699b2b818ba7d888e0eb71c4d
-train finished. saved to /SSF/output/run_GAT_node_classification.py.2022-06-20T03:43:49.950103
-```
+See https://github.com/NetManAIOps/DejaVu/issues/4
 
 ## Datasets
 
